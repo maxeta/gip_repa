@@ -1,0 +1,263 @@
+/*------------------------------------*\
+	НАВИГАЦИЯ
+\*------------------------------------*/
+#nav{
+	float:left;
+	width:100%;
+	list-style:none;
+	font-weight:bold;
+	margin-bottom:10px;
+}
+#nav li{
+	float:left;
+	margin-right:10px;
+	position:relative;
+	display:block;
+}
+#nav li a{
+	display:block;
+	padding:5px;
+	color:#fff;
+	background:#333;
+	text-decoration:none;
+	
+	text-shadow:1px 1px 1px rgba(0,0,0,0.75); /* Тень текста, чтобы приподнять его на немного */
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+}
+#nav li a:hover{
+	color:#fff;
+	background:#CE1815;
+	background:rgba(206,24,21,0.75); /* Выглядит полупрозрачным */
+	text-decoration:underline;
+}
+
+/*--- ВЫПАДАЮЩИЕ ПУНКТЫ ---*/
+#nav ul{
+	list-style:none;
+	position:absolute;
+	left:-9999px; /* Скрываем за экраном, когда не нужно (данный метод лучше, чем display:none;) */
+	opacity:0; /* Устанавливаем начальное состояние прозрачности */
+	-webkit-transition:0.25s linear opacity; /* В Webkit выпадающие пункты будут проявляться */
+}
+#nav ul li{
+	padding-top:1px; /* Вводим отступ между li чтобы создать иллюзию разделенных пунктов меню */
+	float:none;
+	background:rgba(0, 0, 0, 0.1);
+}
+#nav ul a{
+	white-space:nowrap; /* Останавливаем перенос текста и создаем многострочный выпадающий пункт */
+	text-align: left;
+	display:block;
+}
+#nav li:hover ul{ /* Выводим выпадающий пункт при наведении курсора */
+	left:0; /* Приносим его обратно на экран, когда нужно */
+	opacity:1; /* Делаем непрозрачным */
+}
+#nav li:hover a{ /* Устанавливаем стили для верхнего уровня, когда выводится выпадающий список */
+	background:#CE1815;
+	background:rgba(206,24,21,0.75); /* Выглядит полупрозрачным */
+	text-decoration:underline;
+}
+#nav li:hover ul a{ /* Изменяем некоторые стили верхнего уровня при выводе выпадающего пункта */
+	text-decoration:none;
+	-webkit-transition:-webkit-transform 0.075s linear;
+}
+#nav li:hover ul li a:hover{ /* Устанавливаем стили для выпадающих пунктов, когда курсор наводится на конкретный пункт */
+	background:#333;
+	background:rgba(51,51,51,0.75); /* Будет полупрозрачным */
+	text-decoration:underline;
+	-moz-transform:scale(1.05);
+	-webkit-transform:scale(1.05);
+}
+
+
+
+
+/* ------------------------- *\
+		Разметка сайта
+\* ------------------------- */
+
+
+body, html
+{
+	margin: 0;
+  	padding: 0;
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+}
+
+#page
+{
+	position: relative;
+  	min-height: 900px;
+  	height: 100%;
+  	width: 1400px;
+  	max-width: auto;
+  	margin: 0px auto;
+}
+
+#header
+{
+	height: 150px;
+	width: 100%;
+	text-align: center;
+	float: top;
+	background-image: url(../img/head.png);
+	background-repeat: repeat-x;
+}
+
+#top
+{
+	float: top;
+	height: 100px;
+}
+
+#top p:left-text
+{
+	text-align: left;
+}
+
+#top a {
+    display: block;
+    float: left;
+    background-color:  #8cbbd3;
+    color:  #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 30px;
+    padding:11px 51px;
+}
+
+#left_box
+{
+	width: 350px;
+	min-height: 600px; 
+	float: left;
+}
+
+#left_box img
+{
+	width: 350px;
+	height: auto;
+}
+
+#content_box
+{
+	float: left;
+	width: 400px;
+	min-height: 600px;
+}
+
+#content_box a {
+    display: block;
+    float: left;
+    background-color:  #8cbbd3;
+    color:  #ffffff;
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 30px;
+    padding:11px 51px;
+}
+
+#right_box
+{
+	width: 350px;
+	min-height: 600px;
+	float: right;
+}
+
+#footer
+{
+	float: top;
+	position: absolute;
+  	left: 0;
+	bottom: 0;
+ 	width: 100%;
+ 	height: 150px;
+	text-align: center;
+	background-image: url(../img/footer.png);
+	background-repeat: repeat-x; 
+}
+
+#footer p
+{
+	padding-top: 100px;
+}
+
+.h1
+{
+	text-align: center;
+	font-style: normal;
+	font-size: 30px;
+}
+
+.h2
+{
+	font-style: normal;
+	font-size: 20px;
+}
+
+#convector_box
+{
+    width: 300px;	height: auto; /* Размеры */
+    background: #CE1815; /* Цвет фона */
+    background:rgba(206,24,21,0.9);
+    /*outline: 2px solid #000; /* Чёрная рамка */
+    border: 3px solid #fff; /* Белая рамка */
+    border-radius: 10px; /* Радиус скругления */
+}
+
+#cash
+{
+	width: 8em;
+}
+
+#calculator
+{
+	padding-top: 20px;
+	width: 300px;	
+	height: auto;
+}
+
+#calculator table
+{
+	margin: 0 auto;
+	text-align: center;
+	width: auto;
+	height: auto;
+    background: #333;
+   	border: 3px solid #fff; 
+    border-radius: 10px; 
+}
+
+.CalcInG
+{
+	size = 20;
+	border: 1px solid #333; 
+    border-radius: 5px;
+}
+
+.CalcInS
+{
+	border: 1px solid #333; 
+    border-radius: 5px;
+    width: 40px;
+    display:block;
+	padding:5px;
+	color:#333;
+	text-decoration:none;
+	
+	text-shadow:1px 1px 1px rgba(0,0,0,0.5); /* Тень текста, чтобы приподнять его на немного */
+}
+
+.CalcInS:active
+{ /* Устанавливаем стили для кнопок калькулятора при кликании */
+	-moz-transform:scale(1.05);
+	-webkit-transform:scale(1.05);
+}

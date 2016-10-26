@@ -1,0 +1,329 @@
+﻿
+<html>
+<head>
+<meta charset="utf-8">
+<title> My Website! </title>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+<script type="text/javascript">
+
+		var result = 0;
+
+		function AskQuestion(textBoxId, answer)
+		{
+			var userAnswer = document.getElementById(textBoxId).value;
+			if(userAnswer == answer)
+				result++;
+
+		}
+
+		function AskQuestions()
+		{
+			AskQuestion("userAnswer1", "петух");
+			AskQuestion("userAnswer2", "шапка");
+			AskQuestion("userAnswer3", "волосы");
+
+			if(result == 3)
+				alert('Вы угадали все загадки')	;
+			else if(result == 2)
+				alert('Вы угадали две загадки')	;
+			else if(result == 1)
+				alert('Вы угадали одну загадку') ;
+			else
+				alert('Вы ничего не угадали');
+		}		
+
+		
+	</script>
+</head>
+<body>
+	<div id="header_fon"></div>
+	<div id="footer_fon"></div>
+	<div id="page">
+		<div id="header">
+			<ul id="nav">
+				<li>
+					<a href="index.html" title="Вернуться на главную страницу">Главная</a>
+				</li>
+				<li>
+					<a href="#" title="Игрый">Игры и программы</a>
+					<ul>
+						<li><a href="puzzles.html">Загадки</a></li>
+						<li><a href="guess-1.html">Угадай число!</a></li>
+						<li><a href="guess-2.html">Угадай число! (мультиплеер)</a></li>
+						<li><a href="calc.html">Калькулятор депозита</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" title="Галерея">Галерея</a>
+					<ul>
+						<li><a href="#">группа 1</a></li>
+						<li><a href="#">группа 2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#" title="Как с нами связаться">Контакт</a>
+				</li>
+			</ul>
+		</div>
+		<div id="top">
+			<p:left-text class="h1"> Отгадай правильно загадку!  </p>
+		</div>
+		<div id="left_box">
+		</div>
+		<div id="content_box">
+			<p class="h2"> Загадки </p>
+			<p>Не ездок, а со шпорами, не будильник, а всех будит.</p>
+	    	<input type="text" id="userAnswer1">
+
+            <p>Сижу верхом, не ведаю на ком.</p>
+            <input type="text" id="userAnswer2">
+
+            <p>Ношу их много лет, а счету им не знаю.</p>
+            <input type="text" id="userAnswer3">
+
+            <br><br/>
+            <a href="#" onclick="AskQuestions();">Отправить</a>
+		</div>
+		<div id="right_box">
+			<div id="convector_box">
+				<table>
+				    <tr>
+				        <td>ОТДАЕМ:</td>
+				        <td>ПОЛУЧАЕМ:</td>
+				    </tr>
+				    <tr>
+				        <td>
+				        <select id="cash1">
+				 			<option value="USD">USD - Доллар</option>
+				  			<option selected value="RUB">RUB - Рубль</option>
+				  			<option value="EUR">EUR - Евро</option>
+						</select>
+						</td>
+				        <td>
+				        <select id="cash2">
+				 			<option selected value="USD">USD - Доллар</option>
+				  			<option value="RUB">RUB - Рубль</option>
+				  			<option value="EUR">EUR - Евро</option>
+						</select>
+						</td>
+				    </tr>
+				    <tr>
+				    	<td>
+				    		<p>На обмен:</p>
+				    	</td>
+				    	<td></td>
+				    </tr>
+				    <tr>
+				    	<td>
+				    		<input type="number" id="cash" value="100" />
+				    	</td>
+				    	<td>
+				    	
+						<input type="button" id="conv" value="Конвертировать!" onclick="convert();">
+						<script type="text/javascript">
+						//объявляем переменные курсов валют по Международному банку
+						
+
+						//Функция конвертации
+						function convert() 
+						{
+							var rub_rub=1
+							var rub_usd=0.0159
+							var rub_eur=0.0144
+							var usd_usd=1
+							var usd_rub=62.9208
+							var usd_eur=0.9074
+							var eur_eur=1
+							var eur_rub=69.3381
+							var eur_usd=1.1020
+
+							var tmp1 = document.getElementById("cash1").value
+							var tmp2 = document.getElementById("cash2").value
+							var cash = document.getElementById("cash").value
+							//Проверяем соответсвие выбраных валют
+							if (tmp1=='RUB' && tmp2=='RUB')
+							{res = cash*rub_rub} else 
+								{if (tmp1=='RUB' && tmp2=='USD') {res = cash*rub_usd} else 
+									{if (tmp1=='RUB' && tmp2=='EUR') {res = cash*rub_eur} else
+										{if (tmp1=='USD' && tmp2=='USD') {res = cash*usd_usd} else
+											{if (tmp1=='USD' && tmp2=='RUB') {res = cash*usd_rub} else 
+												{if (tmp1=='USD' && tmp2=='EUR') {res = cash*usd_eur} else 
+													{if (tmp1=='EUR' && tmp2=='EUR') {res = cash*eur_eur} else
+														{if (tmp1=='EUR' && tmp2=='RUB') {res = cash*eur_rub} else 
+															{if (tmp1=='EUR' && tmp2=='USD') {res = cash*eur_usd}}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+						var html2="Получим: " + res.toFixed(2) + " " + tmp2
+						document.getElementById('result').innerHTML=html2
+						}
+
+						</script>
+				    	</td>
+				    </tr>
+			    <tr>
+			    	<td>
+			    		<p id="result"></p>
+			    	</td>
+			    	<td></td>
+			    </tr>
+			    </table>
+			</div>
+
+			<form id="calculator">
+				<table>
+			    <tr>
+			        <td colspan="4"> <input class="CalcInG" type="text" value="" id="answerGlobal"> </td>
+			    </tr>
+			    <tr>
+			        <td colspan="4"> <input class="CalcInG" type="text" value="" id="answer"> </td>
+			    </tr>
+			    <tr>
+			        <td><input class="CalcInS" type="button" value="CE" onclick="num_del_in(this.form);" id="del_in"></td>
+			        <td><input class="CalcInS" type="button" value="C" onclick="num_del_all(this.form);" id="del_all"></td>
+			        <td><input class="CalcInS" type="button" value="&#8592" onclick="num_del_last(this.form);" id="del_last"></td>
+			        <td><input class="CalcInS" type="button" value="&#247" onclick="num_divide(this.form);" id="divide"></td>
+			    </tr>
+			    <tr>
+			        <td><input class="CalcInS" type="button" value="7" onclick="num_7(this.form);" id="num7"></td>
+			        <td><input class="CalcInS" type="button" value="8" onclick="num_8(this.form);" id="num8"></td>
+			        <td><input class="CalcInS" type="button" value="9" onclick="num_9(this.form);" id="num9"></td>
+			        <td><input class="CalcInS" type="button" value="x" onclick="num_multiply(this.form);" id="multiply"></td>
+			    </tr>
+			    <tr>
+			        <td><input class="CalcInS" type="button" value="4" onclick="num_4(this.form);" id="num4"></td>
+			        <td><input class="CalcInS" type="button" value="5" onclick="num_5(this.form);" id="num5"></td>
+			        <td><input class="CalcInS" type="button" value="6" onclick="num_6(this.form);" id="num6"></td>
+			        <td><input class="CalcInS" type="button" value="-" onclick="num_deduct(this.form);" id="deduct"></td>
+			    </tr>
+			    <tr>
+			        <td><input class="CalcInS" type="button" value="1" onclick="num_1(this.form);" id="num1"></td>
+			        <td><input class="CalcInS" type="button" value="2" onclick="num_2(this.form);" id="num2"></td>
+			        <td><input class="CalcInS" type="button" value="3" onclick="num_3(this.form);" id="num3"></td>
+			        <td><input class="CalcInS" type="button" value="+" onclick="num_fold(this.form);" id="fold"></td>
+			    </tr>
+			    <tr>
+			        <td><input class="CalcInS" type="button" value="-+" onclick="num_sign(this.form);" id="sign"></td>
+			        <td><input class="CalcInS" type="button" value="0" onclick="num_0(this.form);" id="num0"></td>
+			        <td><input class="CalcInS" type="button" value="." onclick="num_dot(this.form);" id="dot"></td>
+			        <td><input class="CalcInS" type="button" value="=" onclick="num_res(this.form);" id="res"></td>
+			    </tr>
+				</table>
+
+				<script type="text/javascript">
+			        function num_1(form) {
+			            form.answer.value = form.answer.value + form.num1.value
+			        }
+			        function num_2(form) {
+			            form.answer.value = form.answer.value +  form.num2.value
+			        }
+			        function num_3(form) {
+			            form.answer.value = form.answer.value +  form.num3.value
+			        }
+			        function num_4(form) {
+			            form.answer.value = form.answer.value +  form.num4.value
+			        }
+			        function num_5(form) {
+			            form.answer.value = form.answer.value +  form.num5.value
+			        }
+			        function num_6(form) {
+			            form.answer.value = form.answer.value +  form.num6.value
+			        }
+			        function num_7(form) {
+			            form.answer.value = form.answer.value +  form.num7.value
+			        }
+			        function num_8(form) {
+			            form.answer.value = form.answer.value +  form.num8.value
+			        }
+			        function num_9(form) {
+			            form.answer.value = form.answer.value +  form.num9.value
+			        }
+			        function num_0(form) {
+			            var inp = form.answer.value
+			            if (inp !== ""){
+			                form.answer.value = form.answer.value + form.num0.value
+			            }  form.answer.value = form.answer.value
+			        }
+			        function num_dot(form) {
+			            form.answer.value = form.answer.value +  form.dot.value
+			        }
+			        function num_sign(form) {
+			            var inp = form.answer.value
+			            if (inp !== ""){
+			               form.answer.value = form.answer.value * (-1) 
+			            }   form.answer.value = form.answer.value
+			        }
+			        function num_del_last(form) {
+			            var inp = form.answer.value
+			            form.answer.value = inp.substring(0,inp.length - 1)
+			        }
+			        function num_del_in(form) {
+			            var inp = form.answer.value
+			            form.answer.value = inp.substring(0,inp.length - inp.length)
+			        }
+			        function num_del_all(form) {
+			            var inpG = form.answerGlobal.value
+			            var inp = form.answer.value
+			            form.answerGlobal.value = inpG.substring(0,inpG.length - inpG.length)
+			            form.answer.value = inp.substring(0,inp.length - inp.length)
+			        }
+			        function num_divide(form) {
+			            form.answer.value = form.answer.value +  form.divide.value
+			        }
+			        function num_multiply(form) {
+			            form.answer.value = form.answer.value +  form.multiply.value
+			        }
+			        function num_fold(form) {
+			            form.answer.value = form.answer.value +  form.fold.value
+			        }
+			        function num_deduct(form) {
+			            form.answer.value = form.answer.value +  form.deduct.value
+			        }
+
+
+			        function num_res(form) {
+			            
+			            var inp = form.answer.value
+			            var re = /(-?\d+(?:\.\d+)?)\s*([-+x\÷])\s*(-?\d+(?:\.\d+)?)/i    
+			            var znak = inp.match(re)[2]
+			            var mass = inp.split(znak)
+			            var number1 = mass[0]
+			            var number2 = mass[1]
+			            if (znak == '÷'){
+			                var resultGlobal = number1 / number2
+			                form.answerGlobal.value = resultGlobal 
+			                form.answer.value = resultGlobal
+			            } else if (znak == 'x'){
+			                var resultGlobal = number1 * number2
+			                form.answerGlobal.value = resultGlobal 
+			                form.answer.value = resultGlobal
+			                } else if (znak == '+'){
+			                    var resultGlobal = parseFloat(number1) + parseFloat(number2)
+			                    form.answerGlobal.value = resultGlobal 
+			                    form.answer.value = resultGlobal
+			                    } else {
+			                        var resultGlobal = parseFloat(number1) - parseFloat(number2)
+			                        form.answerGlobal.value = resultGlobal 
+			                        form.answer.value = resultGlobal
+			                    }
+			            
+			        }
+
+
+
+			    </script>
+			</form>
+			
+		</div>
+		<div id="footer">
+			<p>Copyright &copy; 2016 by <a href="#">MUXETA</a></p>
+		</div>
+	</div>
+
+</body>
+
+</html>
