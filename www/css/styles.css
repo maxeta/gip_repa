@@ -258,6 +258,6 @@ body, html
 
 .CalcInS:active
 { /* Устанавливаем стили для кнопок калькулятора при кликании */
-	-moz-transform:scale(1.05);
-	-webkit-transform:scale(1.05);
+	-moz-transform:scale(1.1);
+	-webkit-transform:scale(1.1);
 }
